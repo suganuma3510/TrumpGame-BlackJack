@@ -7,19 +7,20 @@ public class BlackJack {
 
         try {
             //プレイヤーの生成
-            ArrayList<Player> player = new ArrayList<Player>();
-            player.add(new Player("村田"));
-            player.add(new Player("山田"));
+            Player player = new Player("村田");
             //進行役の生成
-            Dealer dealer = new Dealer();
+            Dealer dealer = new BeginnerDealer();
             //山札の生成
-            Deck deck = new Deck();
+            TrumpDeck trumpDeck = new TrumpDeck();
             //場の生成
             Table field = new Table();
             //進行役に場、プレイヤー、山札を渡しゲームの準備をする
-            dealer.prepareGame(player, deck, field);
+            dealer.prepareGame(player, trumpDeck, field);
             //ゲームの開始
             dealer.startGame();
+            
+            player.showHand();
+            System.out.println(player.getHand().get(0).getPoint());
             //ゲーム結果
             dealer.result();
         } catch (Exception e) {
