@@ -2,19 +2,21 @@
 //１枚のカードクラス
 public class Card {
 
-    private String mark;
+    private Mark mark;
     private int number;
+    private int point;
 
-    Card(String mark, int number) {
+    Card(Mark mark, int number) {
         setMark(mark);
         setNumber(number);
+        cardPoints();
     }
 
-    public String getMark() {
+    public Mark getMark() {
         return this.mark;
     }
 
-    private void setMark(String mark) {
+    private void setMark(Mark mark) {
         this.mark = mark;
     }
 
@@ -26,20 +28,44 @@ public class Card {
         this.number = number;
     }
 
+    public int getPoint() {
+        return this.point;
+    }
+
+    private void setPoint(int point) {
+        this.point = point;
+    }
+
     //カードの名前を文字列で返す
     @Override
     public String toString() {
         switch (getNumber()) {
             case 1:
-                return getMark() + "A";
+                return getMark() + "のA";
             case 11:
-                return getMark() + "J";
+                return getMark() + "のJ";
             case 12:
-                return getMark() + "Q";
+                return getMark() + "のQ";
             case 13:
-                return getMark() + "K";
+                return getMark() + "のK";
             default:
-                return getMark() + getNumber();
+                return getMark() + "の" + getNumber();
+        }
+    }
+
+    public void cardPoints() {
+        switch (getNumber()) {
+            case 11:
+                setPoint(10);
+                break;
+            case 12:
+                setPoint(10);
+                break;
+            case 13:
+                setPoint(10);
+                break;
+            default:
+                setPoint(getNumber());
         }
     }
 }
