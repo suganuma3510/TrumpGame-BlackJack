@@ -11,7 +11,7 @@ public interface Dealer {
     public void startGame();
 
     //手札を配るメソッド
-    public void handOutCards();
+    public Card handOutCards();
 
     //勝ったプレイヤーをチェックする
     public void winPlayer();
