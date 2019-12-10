@@ -18,9 +18,8 @@ public class BlackJack {
             dealer.prepareGame(player, trumpDeck, field);
             //ゲームの開始
             dealer.startGame();
-            
+
             player.showHand();
-            System.out.println(player.getHand().get(0).getPoint());
             //ゲーム結果
             dealer.result();
         } catch (Exception e) {

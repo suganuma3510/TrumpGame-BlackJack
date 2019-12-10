@@ -1,26 +1,32 @@
+
 import java.util.ArrayList;
 
 //捨て札や上がったプレイヤーを管理するテーブルクラス
 public class Table {
 
-    //捨て札
-    private ArrayList<Card> discards = new ArrayList<Card>();
-    //上がったプレイヤー
-    private ArrayList<Player> winPlayer = new ArrayList<Player>();
+    //プレイヤーの手札
+    private ArrayList<Card> playerHand;
+    //ディーラーの手札
+    private ArrayList<Card> dealerHand;
 
-    public ArrayList<Card> getDiscards() {
-        return this.discards;
+    Table() {
+        playerHand = new ArrayList<Card>();
+        dealerHand = new ArrayList<Card>();
     }
 
-    public void setDiscards(Card discard) {
-        this.discards.add(discard);
+    public ArrayList<Card> getPlayerHand() {
+        return this.playerHand;
     }
 
-    public ArrayList<Player> getWinPlayer() {
-        return this.winPlayer;
+    public void setPlayerHand(Card card) {
+        this.playerHand.add(card);
     }
 
-    public void setWinPlayer(Player winPlayer) {
-        this.winPlayer.add(winPlayer);
+    public ArrayList<Card> getDealerHand() {
+        return this.dealerHand;
+    }
+
+    public void setDealerHand(Card card) {
+        this.dealerHand.add(card);
     }
 }

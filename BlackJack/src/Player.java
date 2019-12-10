@@ -1,16 +1,14 @@
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 //ババ抜きをするプレイヤークラス
 public class Player {
 
     private String name;
-    private ArrayList<Card> hand;
     private Table field;
+    private int totalPoint;
 
     Player(String name) {
-        this.hand = new ArrayList<Card>();
         if (name == null || name == "null") {
             throw new NullPointerException("名前がnullになっています。");
         }
@@ -27,14 +25,6 @@ public class Player {
         return this.name;
     }
 
-    public ArrayList<Card> getHand() {
-        return this.hand;
-    }
-
-    public void setHand(Card card) {
-        this.hand.add(card);
-    }
-
     public Table getField() {
         return this.field;
     }
@@ -43,13 +33,37 @@ public class Player {
         this.field = field;
     }
 
+    public int getTotalPoint() {
+        return this.totalPoint;
+    }
+
+    public void setTotalPoint(int totalPoint) {
+        this.totalPoint = totalPoint;
+    }
+
     //プレイヤーの現在の手札を表示するメソッド
     public void showHand() {
         System.out.println(getName() + "さんの現在の手札");
-        for (Card c : hand) {
+        for (Card c : getField().getPlayerHand()) {
             System.out.print(c.toString() + " ");
         }
         System.out.println("");
+        System.out.println(getTotalPoint());
+    }
+
+    public void pointCount() {
+         boolean aceCheck = false;
+        for (Card c : getField().getPlayerHand()) {
+            aceCheck = c.getNumber() == 11;
+            setTotalPoint(getTotalPoint() + c.getPoint());
+        }
+        if (aceCheck) {
+            if (getTotalPoint() < 11) {
+                setTotalPoint(getTotalPoint() + 10);
+            } else {
+                setTotalPoint(getTotalPoint() - 10);
+            }
+        }
     }
 
     //相手から引くカードを標準入力で受け付けるメソッド
