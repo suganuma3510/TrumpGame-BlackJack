@@ -7,9 +7,9 @@ public class BlackJack {
 
         try {
             //プレイヤーの生成
-            Player player = new Player("村田");
+            User player = new User("村田");
             //進行役の生成
-            Dealer dealer = new BeginnerDealer();
+            Dealer dealer = new Dealer("ゲームマスター");
             //山札の生成
             TrumpDeck trumpDeck = new TrumpDeck();
             //場の生成
@@ -19,7 +19,6 @@ public class BlackJack {
             //ゲームの開始
             dealer.startGame();
 
-            player.showHand();
             //ゲーム結果
             dealer.result();
         } catch (Exception e) {

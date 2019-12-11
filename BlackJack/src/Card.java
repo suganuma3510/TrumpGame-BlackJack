@@ -55,6 +55,9 @@ public class Card {
 
     public void cardPoints() {
         switch (getNumber()) {
+            case 1:
+                setPoint(11);
+                break;
             case 11:
                 setPoint(10);
                 break;
