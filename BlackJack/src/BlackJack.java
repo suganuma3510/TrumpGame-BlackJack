@@ -7,7 +7,7 @@ public class BlackJack {
 
         try {
             //プレイヤーの生成
-            User player = new User("村田");
+            User user = new User("村田");
             //進行役の生成
             Dealer dealer = new Dealer("ゲームマスター");
             //山札の生成
@@ -15,7 +15,7 @@ public class BlackJack {
             //場の生成
             Table field = new Table();
             //進行役に場、プレイヤー、山札を渡しゲームの準備をする
-            dealer.prepareGame(player, trumpDeck, field);
+            dealer.prepareGame(user, trumpDeck, field);
             //ゲームの開始
             dealer.startGame();
 

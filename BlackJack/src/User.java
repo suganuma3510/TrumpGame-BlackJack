@@ -10,14 +10,13 @@ public class User extends Player {
     //相手から引くカードを標準入力で受け付けるメソッド
     public boolean hitCheck() {
 
-        System.out.println("ヒットしますか？");
-        System.out.println("Yes：0　No：1");
+        System.out.println("Hit：0　Stay：1");
         Scanner scanner = new Scanner(System.in);
         //入力される値をチェック
         while (true) {
             if (scanner.hasNextInt()) {
-                int hit = scanner.nextInt();
-                switch (hit) {
+                int checkNum = scanner.nextInt();
+                switch (checkNum) {
                     case 0:
                         return true;
                     case 1:
@@ -32,5 +31,10 @@ public class User extends Player {
                 scanner.next();
             }
         }
+    }
+
+    public void hit(Card card) {
+        System.out.println("【" + card + "】　を引きました。");
+        setHand(card);
     }
 }

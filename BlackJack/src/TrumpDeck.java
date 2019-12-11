@@ -10,10 +10,10 @@ public class TrumpDeck {
         //RDì¬
         this.deck = new ArrayList<Card>();
         for (int i = 1; i <= 13; i++) {
-            this.deck.add(new Card(Mark.spade, i));
-            this.deck.add(new Card(Mark.heart, i));
-            this.deck.add(new Card(Mark.club, i));
-            this.deck.add(new Card(Mark.diamond, i));
+            this.deck.add(new Card(TrumpMark.spade, i));
+            this.deck.add(new Card(TrumpMark.heart, i));
+            this.deck.add(new Card(TrumpMark.club, i));
+            this.deck.add(new Card(TrumpMark.diamond, i));
         }
     }
 

@@ -12,7 +12,7 @@ public class Dealer extends Player {
         super(name);
     }
 
-    public User gatUser() {
+    public User getUser() {
         return this.user;
     }
 
@@ -39,27 +39,26 @@ public class Dealer extends Player {
     //ゲームを始めるメソッド
     public void startGame() {
         System.out.println("【ブラックジャックを開始します】");
-        System.out.println("【プレイヤーにカードを配ります。】");
-        for (int i = 0; i < 2; i++) {
-            gatUser().setHand(handOutCards());
-
-        }
-        this.setHand(handOutCards());
-        pointCount(gatUser());
-        pointCount(this);
-        gatUser().showHand();
-        this.showHand();
-        while(user.hitCheck()){
-             gatUser().setHand(handOutCards());
-        }
+        firstSteps();
         userTurn();
+        if (getUser().getBlackJack()) {
+            System.out.println("ブラックジャック！");
+            dealerTurn();
+        }
+        if (burstCheck(getUser()) == false) {
+            dealerTurn();
+            if (burstCheck(this) == false) {
+                judgment();
+            }
+        }
+
     }
 
     //手札を配るメソッド
     public Card handOutCards() {
         //山札をシャッフルする
         Collections.shuffle(getTrumpDeck().getDeck());
-        //１枚カードをランダムに配る   
+        //１枚カードをランダムに配る  
         return getTrumpDeck().getDeck().remove(0);
 
     }
@@ -94,12 +93,50 @@ public class Dealer extends Player {
     }
 
     public void userTurn() {
-
+        while (getUser().getTotalPoint() < 21 && user.hitCheck()) {
+            getUser().hit(handOutCards());
+            pointCount(getUser());
+            getUser().showHand();
+        }
     }
 
     public void dealerTurn() {
-
+        while (getTotalPoint() < 21 && getTotalPoint() < 17) {
+            setHand(handOutCards());
+            pointCount(this);
+            this.showHand();
+        }
     }
 
-   
+    public void judgment() {
+        if (getUser().getTotalPoint() == getTotalPoint()) {
+            System.out.println("引き分け");
+        }
+        if (getUser().getTotalPoint() < getTotalPoint()) {
+            System.out.println("ゲームマスターの勝ち");
+        } else {
+            System.out.println(getUser().getName() + "さんの勝ち");
+        }
+    }
+
+    public void firstSteps() {
+        System.out.println("【カードを配ります。】");
+        for (int i = 0; i < 2; i++) {
+            getUser().setHand(handOutCards());
+        }
+        this.setHand(handOutCards());
+        pointCount(getUser());
+        pointCount(this);
+        getUser().showHand();
+        this.showHand();
+    }
+
+    public boolean burstCheck(Player player) {
+        if (player.getTotalPoint() > 21) {
+            System.out.println("バーストしました。");
+            System.out.println(player.getName() + "さんの負け");
+            return true;
+        }
+        return false;
+    }
 }

@@ -2,21 +2,21 @@
 //１枚のカードクラス
 public class Card {
 
-    private Mark mark;
+    private TrumpMark mark;
     private int number;
     private int point;
 
-    Card(Mark mark, int number) {
+    Card(TrumpMark mark, int number) {
         setMark(mark);
         setNumber(number);
         cardPoints();
     }
 
-    public Mark getMark() {
+    public TrumpMark getMark() {
         return this.mark;
     }
 
-    private void setMark(Mark mark) {
+    private void setMark(TrumpMark mark) {
         this.mark = mark;
     }
 
