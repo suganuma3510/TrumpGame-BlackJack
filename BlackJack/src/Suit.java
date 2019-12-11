@@ -1,9 +1,10 @@
 
 //トランプの柄
-enum Mark {
+enum Suit {
     spade, heart, club, diamond, Joker;
 
     //カードの柄を文字列で返す
+    @Override
     public String toString() {
         switch (this) {
             case spade:

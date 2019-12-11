@@ -1,17 +1,16 @@
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-//ゲームをするプレイヤークラス
-public abstract class Player {
+//ゲームをするプレイヤーの抽象クラス
+public abstract class PlayerBase {
 
     private String name;
-    private Table field;
     private ArrayList<Card> hand;
-    private int totalPoint;
+    private int totalScore;
+    //手札がブラックジャックならtrue
     private boolean blackJack = false;
 
-    Player(String name) {
+    PlayerBase(String name) {
         this.hand = new ArrayList<Card>();
         if (name == null || name == "null") {
             throw new NullPointerException("名前がnullになっています。");
@@ -29,14 +28,6 @@ public abstract class Player {
         return this.name;
     }
 
-    public Table getField() {
-        return this.field;
-    }
-
-    public void setField(Table field) {
-        this.field = field;
-    }
-
     public ArrayList<Card> getHand() {
         return this.hand;
     }
@@ -45,12 +36,12 @@ public abstract class Player {
         this.hand.add(card);
     }
 
-    public int getTotalPoint() {
-        return this.totalPoint;
+    public int getTotalScore() {
+        return this.totalScore;
     }
 
-    public void setTotalPoint(int totalPoint) {
-        this.totalPoint = totalPoint;
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 
     public boolean getBlackJack() {
@@ -61,18 +52,15 @@ public abstract class Player {
         this.blackJack = blackJack;
     }
 
-    public void blackJackCheck() {
-
-    }
-
     //プレイヤーの現在の手札を表示するメソッド
     public void showHand() {
         System.out.println(getName() + "さんの現在の手札");
         for (Card c : hand) {
             System.out.print("【" + c.toString() + "】 ");
         }
-        System.out.println("： " + getTotalPoint() + "点");
+        System.out.println("： " + getTotalScore() + "点");
+        if (getBlackJack()) {
+            System.out.println("ブラックジャック！");
+        }
     }
-
-   
 }
