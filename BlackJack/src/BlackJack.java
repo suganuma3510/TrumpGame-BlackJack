@@ -1,7 +1,10 @@
 
+import java.util.ArrayList;
+
 public class BlackJack {
 
     public static void main(String[] args) {
+
         try {
             //プレイヤーの生成
             User user = new User("村田");
@@ -9,10 +12,13 @@ public class BlackJack {
             Dealer dealer = new Dealer("ゲームマスター");
             //山札の生成
             TrumpDeck trumpDeck = new TrumpDeck();
+            //場の生成
+            Table field = new Table();
             //進行役に場、プレイヤー、山札を渡しゲームの準備をする
-            dealer.prepareGame(user, trumpDeck);
+            dealer.prepareGame(user, trumpDeck, field);
             //ゲームの開始
             dealer.startGame();
+
             //ゲーム結果
             dealer.result();
         } catch (Exception e) {

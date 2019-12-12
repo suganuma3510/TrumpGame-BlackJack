@@ -2,21 +2,21 @@
 //１枚のカードクラス
 public class Card {
 
-    private Suit mark;
+    private TrumpMark mark;
     private int number;
     private int point;
 
-    Card(Suit mark, int number) {
+    Card(TrumpMark mark, int number) {
         setMark(mark);
         setNumber(number);
         cardPoints();
     }
 
-    public Suit getMark() {
+    public TrumpMark getMark() {
         return this.mark;
     }
 
-    private void setMark(Suit mark) {
+    private void setMark(TrumpMark mark) {
         this.mark = mark;
     }
 
@@ -53,7 +53,6 @@ public class Card {
         }
     }
 
-    //カードの点数
     public void cardPoints() {
         switch (getNumber()) {
             case 1:

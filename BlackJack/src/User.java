@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
-//PlayerBaseを継承したユーザークラス
-public class User extends PlayerBase {
+
+public class User extends Player {
 
     User(String name) {
         super(name);
@@ -9,6 +9,7 @@ public class User extends PlayerBase {
 
     //相手から引くカードを標準入力で受け付けるメソッド
     public boolean hitCheck() {
+
         System.out.println("Hit：0　Stay：1");
         Scanner scanner = new Scanner(System.in);
         //入力される値をチェック
@@ -32,7 +33,6 @@ public class User extends PlayerBase {
         }
     }
 
-    //ヒットたカードを表示して手札にセットする
     public void hit(Card card) {
         System.out.println("【" + card + "】　を引きました。");
         setHand(card);
