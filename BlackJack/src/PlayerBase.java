@@ -54,13 +54,13 @@ public abstract class PlayerBase {
 
     //プレイヤーの現在の手札を表示するメソッド
     public void showHand() {
-        System.out.println(getName() + "さんの現在の手札");
+        System.out.println("\n"+getName() + "さんの現在の手札");
         for (Card c : hand) {
             System.out.print("【" + c.toString() + "】 ");
         }
         System.out.println("： " + getTotalScore() + "点");
         if (getBlackJack()) {
-            System.out.println("ブラックジャック！");
+            System.out.println("《ブラックジャック！》");
         }
     }
 }

@@ -40,14 +40,14 @@ public class Dealer extends PlayerBase {
         //ユーザーがブラックジャックで勝った時の処理
         if (getUser().getBlackJack() && this.getBlackJack() == false) {
             this.showHand();
-            System.out.println(getUser().getName() + "さんの勝ち");
+            System.out.println("\n"+getUser().getName() + "さんの勝ち");
             return;
         }
         userTurn();
         this.showHand();
         //ディーラーがブラックジャックで勝った時の処理
         if (getUser().getBlackJack() == false && this.getBlackJack()) {
-            System.out.println(this.getName() + "さんの勝ち");
+            System.out.println("\n"+this.getName() + "さんの勝ち");
             return;
         }
         //両者ともバーストしていなければ２１に近い方を判定
@@ -80,7 +80,7 @@ public class Dealer extends PlayerBase {
         pointCount(getUser());
         pointCount(this);
         getUser().showHand();
-        System.out.println(getName() + "さんの手札");
+        System.out.println("\n"+getName() + "さんの手札");
         System.out.println("【" + getHand().get(0) + "】　：　" + getHand().get(0).getPoint() + "点");
     }
 
@@ -127,9 +127,9 @@ public class Dealer extends PlayerBase {
     //カードの点数が２１に近いほうを判定し、勝者を判定する
     public void judgment() {
         if (getUser().getTotalScore() < getTotalScore()) {
-            System.out.println("ゲームマスターの勝ち");
+            System.out.println("\n"+"ゲームマスターの勝ち");
         } else if (getUser().getTotalScore() > getTotalScore()) {
-            System.out.println(getUser().getName() + "さんの勝ち");
+            System.out.println("\n"+getUser().getName() + "さんの勝ち");
         } else {
             System.out.println("引き分け");
         }
@@ -138,7 +138,7 @@ public class Dealer extends PlayerBase {
     //バーストしたかをチェックする
     public boolean burstCheck(PlayerBase player) {
         if (player.getTotalScore() > 21) {
-            System.out.println("バーストしました。");
+            System.out.println("\n"+"バーストしました。");
             System.out.println(player.getName() + "さんの負け");
             return true;
         }
