@@ -7,8 +7,7 @@ public abstract class PlayerBase {
     private String name;
     private ArrayList<Card> hand;
     private int totalScore;
-    //手札がブラックジャックならtrue
-    private boolean blackJack = false;
+    private boolean isWin = false;
 
     PlayerBase(String name) {
         this.hand = new ArrayList<Card>();
@@ -44,23 +43,25 @@ public abstract class PlayerBase {
         this.totalScore = totalScore;
     }
 
-    public boolean getBlackJack() {
-        return this.blackJack;
+    public boolean getIsWin() {
+        return this.isWin;
     }
 
-    public void setBlackJack(boolean blackJack) {
-        this.blackJack = blackJack;
+    public void setIsWin(boolean isWin) {
+        this.isWin = isWin;
     }
 
     //プレイヤーの現在の手札を表示するメソッド
     public void showHand() {
-        System.out.println("\n"+getName() + "さんの現在の手札");
-        for (Card c : hand) {
-            System.out.print("【" + c.toString() + "】 ");
-        }
-        System.out.println("： " + getTotalScore() + "点");
-        if (getBlackJack()) {
-            System.out.println("《ブラックジャック！》");
+        if (getHand().isEmpty()==false) {
+            System.out.println("\n" + getName() + "さんの現在の手札");
+            for (Card c : hand) {
+                System.out.print("【" + c.toString() + "】 ");
+            }
+            System.out.println("： " + getTotalScore() + "点");
+            if (getTotalScore() == 21 && getHand().size() == 2) {
+                System.out.println("《ブラックジャック！》");
+            }
         }
     }
 }

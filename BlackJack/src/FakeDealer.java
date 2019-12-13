@@ -1,4 +1,4 @@
-
+//Dealerクラスを継承したブラックジャックしか出さないディーラークラス
 public class FakeDealer extends Dealer {
 
     FakeDealer(String name) {
@@ -13,14 +13,16 @@ public class FakeDealer extends Dealer {
         }
         pointCount(getUser());
         getUser().showHand();
-        System.out.println("\n" + getName() + "さんの手札");
+        //エースを探して手札に加える
         for (int i = 0; i < getTrumpDeck().getDeck().size(); i++) {
             if (1 == getTrumpDeck().getDeck().get(i).getNumber()) {
                 this.setHand(getTrumpDeck().getDeck().remove(i));
-                System.out.println("【" + getHand().get(0) + "】　：　" + getHand().get(0).getPoint() + "点");
                 break;
             }
         }
+        pointCount(this);
+        showHand();
+        //１０以上のカードを探して手札に加える
         for (int i = 0; i < getTrumpDeck().getDeck().size(); i++) {
             if (10 == getTrumpDeck().getDeck().get(i).getPoint()) {
                 this.setHand(getTrumpDeck().getDeck().remove(i));
