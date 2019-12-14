@@ -1,3 +1,4 @@
+
 //Dealerクラスを継承したブラックジャックしか出さないディーラークラス
 public class FakeDealer extends Dealer {
 
@@ -30,6 +31,5 @@ public class FakeDealer extends Dealer {
             }
         }
         pointCount(this);
-
     }
 }

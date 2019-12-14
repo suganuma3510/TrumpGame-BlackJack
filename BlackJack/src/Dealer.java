@@ -46,6 +46,7 @@ public class Dealer extends PlayerBase {
     //ゲームを始めるメソッド
     public void startGame() {
         System.out.println("【ブラックジャックを開始します】");
+        //掛け金を入力しフィールドにセット
         setBetChip(getUser().bet());
         firstSteps();
         //ユーザーがブラックジャックか判定
@@ -176,8 +177,9 @@ public class Dealer extends PlayerBase {
             System.out.println("\n引分け");
             getUser().getChip().setMoney(getUser().getChip().getMoney() + getBetChip());
         }
-
         System.out.println(getUser().getName() + "さんの現在の所持金：" + getUser().getChip());
+        
+        //所持金がなくなったらゲーム終了
         if (getUser().getChip().getMoney() == 0) {
             System.out.println("所持金がなくなりました。");
             System.out.println("【ゲーム終了】");

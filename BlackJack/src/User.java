@@ -1,20 +1,20 @@
 
 import java.util.Scanner;
-//PlayerBaseを継承したユーザークラス
 
+//PlayerBaseを継承したユーザークラス
 public class User extends PlayerBase {
-    
+
     private Chip chip;
-    
+
     User(String name, int money) {
         super(name);
         chip = new Chip(money);
     }
-    
+
     public Chip getChip() {
         return this.chip;
     }
-    
+
     public void setChip(Chip chip) {
         this.chip = chip;
     }
@@ -49,7 +49,8 @@ public class User extends PlayerBase {
         System.out.println("【" + card + "】　を引きました。");
         setHand(card);
     }
-    
+
+    //賭ける金額を標準入力で受け付けるメソッド
     public int bet() {
         System.out.println(getName() + "さんの現在の所持金：" + getChip());
         System.out.println("いくら賭けますか？");
@@ -61,10 +62,10 @@ public class User extends PlayerBase {
                 if (getChip().getMoney() >= betChip && 1 <= betChip) {
                     getChip().setMoney(getChip().getMoney() - betChip);
                     return betChip;
-                } else if(0 > betChip){
+                } else if (0 > betChip) {
                     //指定外の数字が入力された場合の例外処理
                     System.out.println("お金が足りません。もう一度入力してください。");
-                }else{
+                } else {
                     System.out.println("１円以上賭けてください。");
                 }
             } else {

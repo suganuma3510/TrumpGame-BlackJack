@@ -1,4 +1,5 @@
 
+//Š|‚¯‹à‚ğŠÇ—‚·‚éƒNƒ‰ƒX
 public class Chip {
 
     private int money;
